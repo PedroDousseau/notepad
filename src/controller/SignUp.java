@@ -25,7 +25,7 @@ public class SignUp {
     List<User> cadastro = new ArrayList<User>();
     try {
       File f = new File(nomeArquivo);
-      if (!f.exists()) 
+      if (!f.exists())
         return cadastro;
       BufferedReader csvReader = new BufferedReader(new FileReader(nomeArquivo));
       String row;
@@ -62,7 +62,10 @@ public class SignUp {
   public static void cadastrarNovo(String nome, String email, String senha) {
     if (cadastrados == null)
       cadastrados = carregarCadastro();
-    cadastrados.add(new User(nome, email, senha));
+
+    String key = PasswordUtil.hashPassword(senha, PasswordUtil.getAlgorithm()).get();
+    
+    cadastrados.add(new User(nome, email, key));
     salvarCadastro();
   }
 

@@ -15,7 +15,7 @@ public class PasswordUtil {
   private static final int KEY_LENGTH = 512;
   private static final String ALGORITHM = "PBKDF2WithHmacSHA512";
 
-  public static Optional<String> generateSalt(final int length) {
+  public static Optional<String> generateSalt(final int length) { // Method used to generate the salt key 'ALGORITHM'
     if (length < 1) {
       System.err.println("error in generateSalt: length must be > 0");
       return Optional.empty();
@@ -44,16 +44,16 @@ public class PasswordUtil {
 
   public static boolean verifyPassword(String password, String key, String salt) {
     Optional<String> optEncrypted = hashPassword(password, salt);
+    System.out.println("HASHPASSWORD DURING VERIFICATION: " + optEncrypted.get());
+    System.out.println("PASSWORD IN DB: " + key);
+    
     if (!optEncrypted.isPresent())
       return false;
     return optEncrypted.get().equals(key);
   }
 
-  public static void main(String[] args) {
-    String salt = generateSalt(512).get();
-    String password = "Of Salesmen!";
-    String key = hashPassword(password, salt).get();
-    System.out.println(verifyPassword("Of Salesmena!", key, salt));
+  public static String getAlgorithm() {
+    return ALGORITHM;
   }
 
 }
