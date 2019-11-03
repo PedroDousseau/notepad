@@ -12,7 +12,7 @@ import model.User;
 
 public class SignUp {
 
-  private static String nomeArquivo = "cadastro.ser";
+  private static String nomeArquivo = "accounts.ser";
   private static List<User> cadastrados = carregarCadastro();
 
   public static List<User> getCadastrados() {
