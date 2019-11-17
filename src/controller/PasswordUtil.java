@@ -44,11 +44,10 @@ public class PasswordUtil {
 
   public static boolean verifyPassword(String password, String key, String salt) {
     Optional<String> optEncrypted = hashPassword(password, salt);
-    System.out.println("HASHPASSWORD DURING VERIFICATION: " + optEncrypted.get());
-    System.out.println("PASSWORD IN DB: " + key);
-    
+
     if (!optEncrypted.isPresent())
       return false;
+
     return optEncrypted.get().equals(key);
   }
 
