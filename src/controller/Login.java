@@ -21,4 +21,8 @@ public class Login {
     return false;
   }
 
+  public static User getLoggedUser() {
+    return logged;
+  }
+
 }
