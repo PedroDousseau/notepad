@@ -8,9 +8,11 @@ public class Main {
   public static void main(String[] args) {
     LoginDialog loginDlg = new LoginDialog(null);
     loginDlg.setVisible(true);
-    
+
     // if logon successfully
     if (loginDlg.isSucceeded()) {
+      HomeDialog homeDlg = new HomeDialog(null);
+      homeDlg.setVisible(true);
     }
   }
 }
